@@ -1,4 +1,4 @@
-# openssl
+# openssl 
 i want to generate the csr and pem key file. this is the command i have used for generating the ssl certificate
 
 
@@ -18,7 +18,11 @@ Under the System variables section, click New.
 For Variable name, enter OPENSSL_CONF.
 For Variable value, enter the full path of your openssl.cnf file:
 
+Note- random stat error is coming so to resolve it we are running the openssl in the administrator
 
+1) our first step is to generate the private.key file using this command genpkey -algorithm RSA -out private.key -aes256
+2) once you have the private.key file then generate the certificate.csr file through this private key  req -new -key private.key -out certificate.csr
+3) once you have the private.key file and the certificate.csr file then generate the certificate.crt file x509 -req -in certificate.csr -out certificate.crt -signkey private.key -days 365
 
 
 OpenSSL> req -newkey rsa:2048 -keyout private.key -out certificate.csr -days 365 -nodes
